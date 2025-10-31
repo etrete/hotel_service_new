@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "hotel-service"
+version = "0.1.0"
+description = "Hotel room booking service"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.2"
+djangorestframework = "^3.14"
+psycopg2-binary = "^2.9"
+python-dotenv = "^1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3"
+pytest-django = "^4.5"
+pytest-cov = "^4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

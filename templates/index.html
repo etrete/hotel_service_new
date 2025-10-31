@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Отель{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="mb-4"><i class="fas fa-hotel text-primary"></i> Добро пожаловать!</h1>
+        <p class="lead">Система управления номерами и бронированиями отеля</p>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card room-card">
+                    <div class="card-body">
+                        <i class="fas fa-door-open fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Управление номерами</h5>
+                        <p class="card-text">Добавляйте, просматривайте и управляйте номерами отеля</p>
+                        <a href="{% url 'rooms_list' %}" class="btn btn-success">Перейти к номерам</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card room-card">
+                    <div class="card-body">
+                        <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Бронирования</h5>
+                        <p class="card-text">Создавайте и просматривайте бронирования номеров</p>
+                        <a href="{% url 'bookings_list' %}" class="btn btn-info">Перейти к бронированиям</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h4>Быстрые действия</h4>
+            <a href="{% url 'create_room' %}" class="btn btn-primary me-2">
+                <i class="fas fa-plus"></i> Добавить номер
+            </a>
+            <a href="{% url 'create_booking' %}" class="btn btn-warning">
+                <i class="fas fa-plus"></i> Создать бронирование
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Создать бронирование{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2><i class="fas fa-calendar-plus"></i> Создать бронирование</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="room" class="form-label">Номер отеля</label>
+                <select class="form-select" id="room" name="room" required>
+                    <option value="">Выберите номер</option>
+                    {% for room in rooms %}
+                    <option value="{{ room.id }}" {% if initial_room and initial_room.id == room.id %}selected{% endif %}>
+                        #{{ room.id }} - {{ room.description }} ({{ room.price_per_night }} ₽/ночь)
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="check_in_date" class="form-label">Дата заезда</label>
+                <input type="date" class="form-control" id="check_in_date" name="check_in_date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="check_out_date" class="form-label">Дата выезда</label>
+                <input type="date" class="form-control" id="check_out_date" name="check_out_date" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Создать бронирование
+            </button>
+            <a href="{% url 'bookings_list' %}" class="btn btn-secondary">Отмена</a>
+        </form>
+
+        <div class="mt-3 alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Подсказка:</strong> Убедитесь, что дата выезда позже даты заезда.
+        </div>
+    </div>
+</div>
+{% endblock %}
